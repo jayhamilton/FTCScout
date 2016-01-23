@@ -1,4 +1,4 @@
-package com.tcsrobotics.myapplication;
+package com.tcsrobotics.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,5 +34,8 @@ public class DataProvider {
         teamMap.remove(team.getTeamId());
         teamMap.put(team.getTeamId(),team);
         return 0;
+    }
+    public static FTCTeam findItem(int id){
+        return null;
     }
 }

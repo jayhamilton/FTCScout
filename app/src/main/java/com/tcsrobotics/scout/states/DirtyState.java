@@ -1,10 +1,10 @@
 package com.tcsrobotics.scout.states;
 
 
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
+import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.DetailActivity;
 import com.tcsrobotics.myapplication.R;
 
@@ -36,6 +36,7 @@ public class DirtyState implements AppState {
                 child.setEnabled(false);
             }
         }
+        detailActivity.getOptionsMenu().findItem(R.id.action_save_active).setVisible(false);
         detailActivity.setState(detailActivity.getSavedState());
 
     }
@@ -43,17 +44,7 @@ public class DirtyState implements AppState {
     @Override
     public void performModification() {
 
-        ViewGroup viewGroup = (GridLayout) detailActivity.findViewById(R.id.gridLayout);
-        int count = viewGroup.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View child = viewGroup.getChildAt(i);
-            if (child.isDirty()) {
-                //enable save
-                MenuItem menuItem = detailActivity.getOptionsMenu().getItem(R.id.action_save);
-                menuItem.setEnabled(true);
-                break;
-            }
-        }
+
 
     }
 
@@ -69,6 +60,11 @@ public class DirtyState implements AppState {
 
     @Override
     public void performUndo() {
+
+    }
+
+    @Override
+    public void showControls(FTCTeam team) {
 
     }
 }

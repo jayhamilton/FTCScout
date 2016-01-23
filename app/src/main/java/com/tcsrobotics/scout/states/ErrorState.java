@@ -1,6 +1,7 @@
 package com.tcsrobotics.scout.states;
 
 
+import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.DetailActivity;
 
 /**
@@ -41,6 +42,11 @@ public class ErrorState implements AppState {
 
     @Override
     public void performUndo() {
+
+    }
+
+    @Override
+    public void showControls(FTCTeam team) {
 
     }
 }

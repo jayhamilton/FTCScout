@@ -1,7 +1,9 @@
 package com.tcsrobotics.scout.states;
 
-import android.widget.EditText;
-import com.tcsrobotics.myapplication.*;
+import com.tcsrobotics.domain.DataProvider;
+import com.tcsrobotics.domain.FTCTeam;
+import com.tcsrobotics.myapplication.DetailActivity;
+import com.tcsrobotics.myapplication.MainActivity;
 
 /**
  * Created by jayhamilton on 1/19/16.
@@ -50,8 +52,7 @@ public class InitializedState implements AppState {
             detailActivity.setState(detailActivity.getEditState());
         }
 
-        initializeDetailControls(team);
-        initializeActionBarControls();
+        detailActivity.getState().showControls(team);
 
     }
 
@@ -60,20 +61,10 @@ public class InitializedState implements AppState {
 
     }
 
-    public void initializeDetailControls(FTCTeam team) {
-
-        EditText teamId = (EditText) detailActivity.findViewById(R.id.editTextTeamId);
-        EditText teamName = (EditText) detailActivity.findViewById(R.id.editTextTeamName);
-        EditText teamRanking = (EditText) detailActivity.findViewById(R.id.editTeamRanking);
-
-
-        teamId.setText(team.getTeamId());
-        teamName.setText(team.getTeamName());
-        String _teamRank = team.getTeamRank() + "";
-        teamRanking.setText(_teamRank);
-    }
-
-    public void initializeActionBarControls() {
+    @Override
+    public void showControls(FTCTeam team) {
 
     }
+
+
 }

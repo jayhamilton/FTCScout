@@ -25,6 +25,7 @@ public class DetailActivity extends AppCompatActivity {
     AppState editState;
     AppState newState;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -45,6 +46,11 @@ public class DetailActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_detail, menu);
         optionsMenu = menu;
+
+        if(getState() == newState){
+            optionsMenu.findItem(R.id.action_edit_team_active).setVisible(false);
+            optionsMenu.findItem(R.id.action_delete_team_active).setVisible(false);
+        }
         return true;
     }
 
@@ -55,22 +61,21 @@ public class DetailActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-
         switch (id) {
             case R.id.action_settings:
                 Toast.makeText(DetailActivity.this, "This is a message from jay", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.action_add_team:
+            case R.id.action_save_active:
                 Toast.makeText(DetailActivity.this, "Adding a new team", Toast.LENGTH_SHORT).show();
                 state.performSaving();
                 return true;
-            case R.id.action_edit_team:
+            case R.id.action_edit_team_active:
                 state.performEditing();
                 return true;
-            case R.id.action_delete_team:
+            case R.id.action_delete_team_active:
                 state.performDeleting();
                 return true;
-            case R.id.action_undo:
+            case R.id.action_undo_active:
                 state.performUndo();
                 return true;
 
@@ -78,7 +83,6 @@ public class DetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     public void editControlClickHandler(View view) {
 
@@ -88,8 +92,6 @@ public class DetailActivity extends AppCompatActivity {
             case R.id.editTextTeamId:
             case R.id.editTextTeamName:
             case R.id.editTextDefenseComment:
-
-
                 final EditText textControl = (EditText) findViewById(view.getId());
                 textControl.addTextChangedListener(new TextWatcher() {
 
@@ -107,10 +109,8 @@ public class DetailActivity extends AppCompatActivity {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-
-                        // TODO Auto-generated method stub
-                        Toast.makeText(DetailActivity.this, "Text Changed" + textControl.getText(), Toast.LENGTH_SHORT).show();
                         state.performModification();
+                        Toast.makeText(DetailActivity.this, "Text Changed to " + textControl.getText() + " while in state " + getState().getClass().getName(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -162,7 +162,6 @@ public class DetailActivity extends AppCompatActivity {
     public Menu getOptionsMenu() {
         return optionsMenu;
     }
-
 
     private void initialize() {
 

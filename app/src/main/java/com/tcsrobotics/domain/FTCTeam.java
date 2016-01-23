@@ -1,4 +1,4 @@
-package com.tcsrobotics.myapplication;
+package com.tcsrobotics.domain;
 
 import java.util.Date;
 import java.util.List;

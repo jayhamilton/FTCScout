@@ -7,6 +7,7 @@
             android:title="@string/action_settings"
             android:orderInCategory="105"
             app:showAsAction="never"/>
+    <!--
     <item
             android:id="@+id/action_save"
             android:orderInCategory="106"
@@ -15,28 +16,64 @@
             android:icon="@drawable/ic_action_save"
             android:enabled="false"
     />
+
     <item
             android:id="@+id/action_edit_team"
-            android:orderInCategory="106"
+            android:orderInCategory="107"
             android:title="@string/action_edit_item"
             app:showAsAction="always"
             android:icon="@drawable/ic_action_edit"
-            android:enabled="true"
+            android:visible="false"
     />
     <item
             android:id="@+id/action_delete_team"
-            android:orderInCategory="106"
+            android:orderInCategory="108"
             android:title="@string/action_delete_item"
             app:showAsAction="always"
             android:icon="@drawable/ic_action_delete"
-            android:enabled="true"
+            android:visible="false"
     />
     <item
             android:id="@+id/action_undo"
-            android:orderInCategory="106"
+            android:orderInCategory="109"
             android:title="@string/action_undo_item"
             app:showAsAction="always"
             android:icon="@drawable/ic_action_undo"
             android:enabled="true"
+    />
+    -->
+    <item
+            android:id="@+id/action_save_active"
+            android:orderInCategory="106"
+            android:title="@string/action_save_item"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_action_save_active"
+            android:visible="false"
+    />
+
+    <item
+            android:id="@+id/action_edit_team_active"
+            android:orderInCategory="107"
+            android:title="@string/action_edit_item"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_action_edit_active"
+            android:visible="true"
+    />
+    <item
+            android:id="@+id/action_delete_team_active"
+            android:orderInCategory="108"
+            android:title="@string/action_delete_item"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_action_delete_active"
+            android:visible="true"
+    />
+
+    <item
+            android:id="@+id/action_undo_active"
+            android:orderInCategory="109"
+            android:title="@string/action_undo_item"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_action_undo_active"
+            android:visible="false"
     />
 </menu>

@@ -1,5 +1,7 @@
 package com.tcsrobotics.scout.states;
 
+import com.tcsrobotics.domain.FTCTeam;
+
 public interface AppState {
     void performEditing();
 
@@ -12,6 +14,8 @@ public interface AppState {
     void initializeDetailScreen();
 
     void performUndo();
+
+    void showControls(FTCTeam team);
 
 
 }
