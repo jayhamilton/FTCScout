@@ -1,11 +1,17 @@
 package com.tcsrobotics.scout.states;
 
 public interface AppState {
+    void performEditing();
 
-    void editing();
-    void saving();
-    void creating();
-    void deleting();
-    void undoing();
+    void performSaving();
+
+    void performModification();
+
+    void performDeleting();
+
+    void initializeDetailScreen();
+
+    void performUndo();
+
 
 }

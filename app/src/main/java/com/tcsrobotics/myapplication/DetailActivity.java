@@ -8,49 +8,37 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.Toast;
+import com.tcsrobotics.scout.states.*;
 
 public class DetailActivity extends AppCompatActivity {
 
     private Menu optionsMenu;
 
+    AppState state;
+    AppState dirtyState;
+    AppState errorState;
+    AppState initializedState;
+    AppState revertedState;
+    AppState savedState;
+    AppState editState;
+    AppState newState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        /* system calls */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
 
-        String teamId = getIntent().getStringExtra(MainActivity.TEAM_ID);
-
-        FTCTeam team = null;
-
-        if (teamId.compareTo(MainActivity.OP_NEW) == 0) {
-            team = new FTCTeam("");
-        } else {
-            team = DataProvider.teamMap.get(teamId);
-        }
-        showControls(team);
+        initialize();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-
-    private void showControls(FTCTeam team) {
-
-        EditText teamId = (EditText) findViewById(R.id.editTextTeamId);
-        EditText teamName = (EditText) findViewById(R.id.editTextTeamName);
-        EditText teamRanking = (EditText) findViewById(R.id.editTeamRanking);
-
-
-        teamId.setText(team.getTeamId());
-        teamName.setText(team.getTeamName());
-        String _teamRank = team.getTeamRank() + "";
-        teamRanking.setText(_teamRank);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,7 +55,6 @@ public class DetailActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
 
         switch (id) {
             case R.id.action_settings:
@@ -75,14 +62,16 @@ public class DetailActivity extends AppCompatActivity {
                 return true;
             case R.id.action_add_team:
                 Toast.makeText(DetailActivity.this, "Adding a new team", Toast.LENGTH_SHORT).show();
-                //callDetail(OP_NEW, -1);
+                state.performSaving();
                 return true;
             case R.id.action_edit_team:
-                //change state to edit
-                enableControls();
+                state.performEditing();
                 return true;
             case R.id.action_delete_team:
-
+                state.performDeleting();
+                return true;
+            case R.id.action_undo:
+                state.performUndo();
                 return true;
 
         }
@@ -90,38 +79,6 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void enableControls() {
-        ViewGroup viewGroup = (GridLayout) findViewById(R.id.gridLayout);
-        int count = viewGroup.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View child = viewGroup.getChildAt(i);
-            child.setEnabled(true);
-        }
-    }
-    private void disableControls() {
-        ViewGroup viewGroup = (GridLayout) findViewById(R.id.gridLayout);
-        int count = viewGroup.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View child = viewGroup.getChildAt(i);
-            if(child.isClickable()) {
-                child.setEnabled(false);
-            }
-        }
-    }
-
-    private void pageIsDirty() {
-        ViewGroup viewGroup = (GridLayout) findViewById(R.id.gridLayout);
-        int count = viewGroup.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View child = viewGroup.getChildAt(i);
-            if(child.isDirty()){
-                //enable save
-                MenuItem menuItem = optionsMenu.getItem(R.id.action_save);
-                menuItem.setEnabled(true);
-                break;
-            }
-        }
-    }
 
     public void editControlClickHandler(View view) {
 
@@ -153,12 +110,73 @@ public class DetailActivity extends AppCompatActivity {
 
                         // TODO Auto-generated method stub
                         Toast.makeText(DetailActivity.this, "Text Changed" + textControl.getText(), Toast.LENGTH_SHORT).show();
-                       // pageIsDirty();
+                        state.performModification();
 
                     }
                 });
         }
 
     }
+
+    public void setState(AppState _state) {
+        this.state = _state;
+    }
+
+    public AppState getState() {
+        return state;
+    }
+
+    public AppState getDirtyState() {
+        return dirtyState;
+    }
+
+
+    public AppState getErrorState() {
+        return errorState;
+    }
+
+
+    public AppState getInitializedState() {
+        return initializedState;
+    }
+
+    public AppState getRevertedState() {
+        return revertedState;
+    }
+
+
+    public AppState getSavedState() {
+        return savedState;
+    }
+
+
+    public AppState getEditState() {
+        return editState;
+    }
+
+
+    public AppState getNewState() {
+        return newState;
+    }
+
+    public Menu getOptionsMenu() {
+        return optionsMenu;
+    }
+
+
+    private void initialize() {
+
+        this.dirtyState = new DirtyState(this);
+        this.errorState = new ErrorState(this);
+        this.initializedState = new InitializedState(this);
+        this.revertedState = new RevertedState(this);
+        this.savedState = new SavedState(this);
+        this.editState = new EditState(this);
+        this.newState = new NewState(this);
+        this.state = this.initializedState;
+        this.state.initializeDetailScreen();
+
+    }
+
 
 }

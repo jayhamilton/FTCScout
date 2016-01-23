@@ -1,30 +1,43 @@
 package com.tcsrobotics.scout.states;
 
+import com.tcsrobotics.myapplication.DetailActivity;
+
 public class RevertedState implements AppState {
 
 
+    DetailActivity detailActivity;
+
+    public RevertedState(DetailActivity _detailActivity) {
+        detailActivity = _detailActivity;
+    }
+
     @Override
-    public void editing() {
+    public void performEditing() {
 
     }
 
     @Override
-    public void saving() {
+    public void performSaving() {
 
     }
 
     @Override
-    public void creating() {
+    public void performModification() {
 
     }
 
     @Override
-    public void deleting() {
+    public void performDeleting() {
 
     }
 
     @Override
-    public void undoing() {
+    public void initializeDetailScreen() {
+
+    }
+
+    @Override
+    public void performUndo() {
 
     }
 }

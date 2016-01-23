@@ -11,6 +11,7 @@
     <string name="action_save_item">Save</string>
     <string name="action_edit_item">Edit</string>
     <string name="action_delete_item">Delete</string>
+    <string name="action_undo_item">Undo</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_detail">DetailActivity</string>
 </resources>

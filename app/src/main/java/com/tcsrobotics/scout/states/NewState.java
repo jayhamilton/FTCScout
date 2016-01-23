@@ -1,19 +1,17 @@
 package com.tcsrobotics.scout.states;
 
-
 import com.tcsrobotics.myapplication.DetailActivity;
 
 /**
- * Created by jayhamilton on 9/19/15.
+ * Created by jayhamilton on 1/23/16.
  */
-public class ErrorState implements AppState {
+public class NewState implements AppState{
 
     DetailActivity detailActivity;
 
-    public ErrorState(DetailActivity _detailActivity){
+    public NewState(DetailActivity _detailActivity){
         detailActivity = _detailActivity;
     }
-
     @Override
     public void performEditing() {
 
@@ -44,8 +42,3 @@ public class ErrorState implements AppState {
 
     }
 }
-
-
-
-
-

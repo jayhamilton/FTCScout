@@ -34,13 +34,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                /*
-                CheckBox cbx = (CheckBox) findViewById(R.id.cbx_auto);
-                EditText teamId = (EditText) findViewById(R.id.teamNumber);
-
-
-                Snackbar.make(view, "Team: " + teamId.getText().toString() + " uses auto? " + cbx.isChecked(), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                        */
+                submit message
+                */
             }
         });
 
