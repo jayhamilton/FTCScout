@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.scout.states.*;
 
 public class DetailActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class DetailActivity extends AppCompatActivity {
     AppState editState;
     AppState newState;
 
+    FTCTeam team;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,5 +179,11 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
+    public FTCTeam getTeam() {
+        return team;
+    }
 
+    public void setTeam(FTCTeam team) {
+        this.team = team;
+    }
 }

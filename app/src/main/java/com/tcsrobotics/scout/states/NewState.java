@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.DetailActivity;
 import com.tcsrobotics.myapplication.R;
@@ -35,6 +36,15 @@ public class NewState implements AppState {
                 child.setEnabled(false);
             }
         }
+
+        //getTeamObject and add it to the dataprovider
+        FTCTeam _team = detailActivity.getTeam();
+        _team.setTeamId(((EditText) detailActivity.findViewById(R.id.editTextTeamId)).getText().toString());
+        _team.setTeamName(((EditText) detailActivity.findViewById(R.id.editTextTeamName)).getText().toString());
+        _team.setTeamRank(66);
+
+        DataProvider.saveTeam(_team);
+
         detailActivity.getOptionsMenu().findItem(R.id.action_save_active).setVisible(false);
         detailActivity.getOptionsMenu().findItem(R.id.action_edit_team_active).setVisible(true);
         detailActivity.getOptionsMenu().findItem(R.id.action_delete_team_active).setVisible(true);

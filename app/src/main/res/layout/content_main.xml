@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/textTeamName"
+                android:ems="6"
         />
 
 
@@ -29,7 +30,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/textTeamId"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="5dp"
+                android:ems="4"
         />
 
         <TextView
@@ -37,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/textTeamRank"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="5dp"
+                android:ems="3"
         />
 
 

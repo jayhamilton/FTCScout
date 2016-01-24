@@ -195,6 +195,12 @@ public class FTCTeam {
         setTeamName(team);
     }
 
-
+    public boolean equals(Object aThat) {
+        if (this == aThat) return true;
+        if (!(aThat instanceof FTCTeam)) return false;
+        FTCTeam that = (FTCTeam) aThat;
+        return
+                this.teamId == that.teamId;
+    }
 
 }

@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String TEAM_ID = "TEAM_ID";
     public static final String OP_EDIT = "EDIT";
     public static final String OP_NEW = "NEW";
-    List<FTCTeam> teams = DataProvider.teamList;
+
+    List<FTCTeam> teams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        setTeams(DataProvider.teamList);
 
-        FTCTeamAdapter adapter = new FTCTeamAdapter(this, R.layout.content_main, teams);
+        FTCTeamAdapter adapter = new FTCTeamAdapter(this, R.layout.content_main, getTeams());
         ListView view = (ListView) findViewById(R.id.listView);
         view.setAdapter(adapter);
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
 
         if (operation.compareTo(OP_EDIT) == 0) {
-            team = teams.get(position);
+            team = getTeams().get(position);
             teamId = team.getTeamId();
         } else {
             teamId = OP_NEW;
@@ -109,4 +111,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private List<FTCTeam> getTeams() {
+        return teams;
+    }
+
+    private void setTeams(List<FTCTeam> teams) {
+        this.teams = teams;
+    }
 }

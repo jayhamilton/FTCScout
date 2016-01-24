@@ -51,6 +51,7 @@ public class InitializedState implements AppState {
             team = DataProvider.teamMap.get(teamId);
             detailActivity.setState(detailActivity.getEditState());
         }
+        detailActivity.setTeam(team);
 
         detailActivity.getState().showControls(team);
 

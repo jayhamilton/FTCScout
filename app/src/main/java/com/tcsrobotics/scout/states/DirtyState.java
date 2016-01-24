@@ -3,7 +3,9 @@ package com.tcsrobotics.scout.states;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.GridLayout;
+import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.DetailActivity;
 import com.tcsrobotics.myapplication.R;
@@ -27,7 +29,6 @@ public class DirtyState implements AppState {
     @Override
     public void performSaving() {
 
-
         ViewGroup viewGroup = (GridLayout) detailActivity.findViewById(R.id.gridLayout);
         int count = viewGroup.getChildCount();
         for (int i = 0; i < count; i++) {
@@ -36,6 +37,15 @@ public class DirtyState implements AppState {
                 child.setEnabled(false);
             }
         }
+
+        //getTeamObject and add it to the dataprovider
+        FTCTeam _team = detailActivity.getTeam();
+        _team.setTeamId(((EditText) detailActivity.findViewById(R.id.editTextTeamId)).getText().toString());
+        _team.setTeamName(((EditText) detailActivity.findViewById(R.id.editTextTeamName)).getText().toString());
+        _team.setTeamRank(4);
+
+        DataProvider.updateTeam(_team);
+
         detailActivity.getOptionsMenu().findItem(R.id.action_save_active).setVisible(false);
         detailActivity.setState(detailActivity.getSavedState());
 
