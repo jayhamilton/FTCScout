@@ -13,6 +13,7 @@
                 android:id="@+id/searchView"
                 android:layout_weight=".25"
                 android:layout_marginTop="47dp"
+                android:queryHint="Search..."
         />
         <ListView
                 android:layout_width="match_parent"
