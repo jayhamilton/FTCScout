@@ -17,6 +17,10 @@ public class DataProvider {
 
         addTeam("robocubs", "8421", 5);
         addTeam("team2", "3434", 1);
+
+        addTeam("robocubs", "8421", 5);
+        addTeam("team2", "3434", 1);
+        
     }
 
     public static void addTeam(String teamName, String teamId, int teamRank) {

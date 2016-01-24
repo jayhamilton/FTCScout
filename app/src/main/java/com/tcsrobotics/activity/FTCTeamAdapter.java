@@ -30,7 +30,7 @@ public class FTCTeamAdapter extends ArrayAdapter<FTCTeam> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.content_main, parent,false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent,false);
         }
 
         FTCTeam team = teams.get(position);
@@ -38,7 +38,7 @@ public class FTCTeamAdapter extends ArrayAdapter<FTCTeam> {
         TextView teamNumber = (TextView) convertView.findViewById(R.id.textTeamId);
         TextView teamRank = (TextView) convertView.findViewById(R.id.textTeamRank);
         teamName.setText(team.getTeamName());
-        teamNumber.setText(team.getTeamId() + "");
+        teamNumber.setText(team.getTeamId());
         teamRank.setText(team.getTeamRank() + "");
 
         return  convertView;

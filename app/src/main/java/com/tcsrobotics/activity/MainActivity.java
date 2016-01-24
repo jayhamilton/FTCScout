@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         setTeams(DataProvider.teamList);
 
-        FTCTeamAdapter adapter = new FTCTeamAdapter(this, R.layout.content_main, getTeams());
+        FTCTeamAdapter adapter = new FTCTeamAdapter(this, R.layout.list_item, getTeams());
         ListView view = (ListView) findViewById(R.id.listView);
         view.setAdapter(adapter);
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
