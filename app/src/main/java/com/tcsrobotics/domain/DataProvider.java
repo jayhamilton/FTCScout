@@ -15,7 +15,7 @@ public class DataProvider {
 
     static {
 
-        addTeam("team1", "2323", 5);
+        addTeam("robocubs", "8421", 5);
         addTeam("team2", "3434", 1);
     }
 
@@ -49,6 +49,20 @@ public class DataProvider {
         teamMap.put(team.getTeamId(), team);
         return 0;
     }
+
+    public static int deleteTeam(FTCTeam team) {
+        int index = 0;
+        for (FTCTeam _team : teamList) {
+            if (_team == team) {
+                teamList.remove(index);
+                break;
+            }
+            index++;
+        }
+        teamMap.remove(team.getTeamId());
+        return 0;
+    }
+
 
     public static FTCTeam findItem(int id) {
         return null;

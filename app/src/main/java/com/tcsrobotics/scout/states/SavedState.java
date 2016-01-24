@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import com.tcsrobotics.domain.FTCTeam;
-import com.tcsrobotics.myapplication.DetailActivity;
+import com.tcsrobotics.activity.DetailActivity;
 import com.tcsrobotics.myapplication.R;
 
 /**

@@ -1,6 +1,10 @@
-package com.tcsrobotics.myapplication;
+package com.tcsrobotics.activity;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -11,15 +15,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tcsrobotics.domain.FTCTeam;
+import com.tcsrobotics.myapplication.R;
 import com.tcsrobotics.scout.states.*;
 
 public class DetailActivity extends AppCompatActivity {
 
     private Menu optionsMenu;
+    final Context context = this;
 
     AppState state;
     AppState dirtyState;
-    AppState errorState;
     AppState initializedState;
     AppState revertedState;
     AppState savedState;
@@ -49,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_detail, menu);
         optionsMenu = menu;
 
-        if(getState() == newState){
+        if (getState() == newState) {
             optionsMenu.findItem(R.id.action_edit_team_active).setVisible(false);
             optionsMenu.findItem(R.id.action_delete_team_active).setVisible(false);
         }
@@ -75,7 +80,7 @@ public class DetailActivity extends AppCompatActivity {
                 state.performEditing();
                 return true;
             case R.id.action_delete_team_active:
-                state.performDeleting();
+                showDialog("Sure you want to delete this team ( " + getTeam().getTeamName() + " : " + getTeam().getTeamId() + " )?");
                 return true;
             case R.id.action_undo_active:
                 state.performUndo();
@@ -120,6 +125,45 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
+
+    public void showDialog(String msg) {
+
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+
+        // set title
+        alertDialogBuilder.setTitle(msg);
+
+        // set dialog message
+        alertDialogBuilder
+                .setMessage("Click no to exit!")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        /*perform delete and go back to the main activity*/
+                        DetailActivity.this.getState().performDeleting();
+                        Intent myIntent = new Intent(DetailActivity.this, MainActivity.class);
+                        startActivity(myIntent);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+
+    }
+
     public void setState(AppState _state) {
         this.state = _state;
     }
@@ -130,11 +174,6 @@ public class DetailActivity extends AppCompatActivity {
 
     public AppState getDirtyState() {
         return dirtyState;
-    }
-
-
-    public AppState getErrorState() {
-        return errorState;
     }
 
 
@@ -168,7 +207,6 @@ public class DetailActivity extends AppCompatActivity {
     private void initialize() {
 
         this.dirtyState = new DirtyState(this);
-        this.errorState = new ErrorState(this);
         this.initializedState = new InitializedState(this);
         this.revertedState = new RevertedState(this);
         this.savedState = new SavedState(this);

@@ -2,8 +2,8 @@ package com.tcsrobotics.scout.states;
 
 import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
-import com.tcsrobotics.myapplication.DetailActivity;
-import com.tcsrobotics.myapplication.MainActivity;
+import com.tcsrobotics.activity.DetailActivity;
+import com.tcsrobotics.activity.MainActivity;
 
 /**
  * Created by jayhamilton on 1/19/16.

@@ -1,7 +1,7 @@
 package com.tcsrobotics.scout.states;
 
 import com.tcsrobotics.domain.FTCTeam;
-import com.tcsrobotics.myapplication.DetailActivity;
+import com.tcsrobotics.activity.DetailActivity;
 
 public class RevertedState implements AppState {
 

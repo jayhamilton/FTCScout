@@ -1,11 +1,9 @@
-package com.tcsrobotics.myapplication;
+package com.tcsrobotics.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import com.tcsrobotics.myapplication.R;
 
 public class AboutActivity extends AppCompatActivity {
 

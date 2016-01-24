@@ -1,4 +1,4 @@
-package com.tcsrobotics.myapplication;
+package com.tcsrobotics.activity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.tcsrobotics.domain.FTCTeam;
+import com.tcsrobotics.myapplication.R;
 
 import java.util.List;
 

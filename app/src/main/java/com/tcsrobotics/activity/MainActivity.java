@@ -1,4 +1,4 @@
-package com.tcsrobotics.myapplication;
+package com.tcsrobotics.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
+import com.tcsrobotics.myapplication.R;
 
 import java.util.List;
 
