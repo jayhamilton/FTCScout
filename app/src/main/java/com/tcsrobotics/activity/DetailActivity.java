@@ -7,12 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.R;
@@ -93,6 +90,8 @@ public class DetailActivity extends AppCompatActivity {
 
     public void editControlClickHandler(View view) {
 
+        state.performModification();
+/*
         switch (view.getId()) {
 
             case R.id.editTeamRanking:
@@ -122,6 +121,7 @@ public class DetailActivity extends AppCompatActivity {
                     }
                 });
         }
+        */
 
     }
 

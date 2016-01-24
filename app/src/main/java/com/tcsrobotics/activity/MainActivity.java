@@ -9,10 +9,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.Toast;
+import android.widget.*;
 import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.R;
@@ -38,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         listView = (ListView) findViewById(R.id.listView);
         searchView = (SearchView) findViewById(R.id.searchView);
+        View header = getLayoutInflater().inflate(R.layout.list_header, null);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,17 +52,19 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         FTCTeamAdapter adapter = new FTCTeamAdapter(this, getTeams());
         listView.setAdapter(adapter);
+        listView.addHeaderView(header);
 
         listView.setTextFilterEnabled(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                /* TODO
-                    This needs to be fixed. Now that I am using a filter I need to get the data id and not rely on
-                    position to get the correct row selected value
-                 */
-                callDetail(OP_EDIT, position);
+
+                TextView _teamId = (TextView) view.findViewById(R.id.textTeamId);
+
+                if (_teamId != null) {
+                    callDetail(OP_EDIT, _teamId.getText().toString());
+                }
             }
         });
 
@@ -81,16 +81,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
 
-    private void callDetail(String operation, int position) {
+    private void callDetail(String operation, String teamId) {
 
-        FTCTeam team = null;
-        String teamId = "";
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
 
-        if (operation.compareTo(OP_EDIT) == 0) {
-            team = getTeams().get(position);
-            teamId = team.getTeamId();
-        } else {
+        if (operation.compareTo(OP_EDIT) != 0) {
             teamId = OP_NEW;
         }
         intent.putExtra(TEAM_ID, teamId);
@@ -121,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 return true;
             case R.id.action_add_team:
                 Toast.makeText(MainActivity.this, "Adding a new team", Toast.LENGTH_SHORT).show();
-                callDetail(OP_NEW, -1);
+                callDetail(OP_NEW, "");
                 return true;
             case R.id.action_about:
 

@@ -4,33 +4,37 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:weightSum="1"
-              android:padding="15dp">
+              android:padding="15dp"
+              android:id="@+id/header">
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textTeamName"
+                android:id="@+id/textTeamNameHeader"
+                android:text="Name"
                 android:ems="6"
-        />
+                android:textColor="@color/material_blue_grey_900"/>
 
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textTeamId"
+                android:id="@+id/textTeamIdHeader"
+                android:text="ID"
                 android:layout_marginLeft="5dp"
                 android:ems="4"
-        />
+                android:textColor="@color/material_blue_grey_900"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/textTeamRank"
+                android:id="@+id/textTeamRankHeader"
+                android:text="Rank"
                 android:layout_marginLeft="5dp"
                 android:ems="3"
-        />
+                android:textColor="@color/material_blue_grey_900"/>
 
 </LinearLayout>
