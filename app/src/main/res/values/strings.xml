@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TCS Scouting Application</string>
+    <string name="app_name">FTC Scout</string>
     <string name="action_settings">Settings</string>
 
     <string name="title_activity_about">About Scout Report</string>

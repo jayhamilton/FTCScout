@@ -11,7 +11,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/textTeamName"
-                android:ems="8"
+                android:ems="10"
         />
 
 

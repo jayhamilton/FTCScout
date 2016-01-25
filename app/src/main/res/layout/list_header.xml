@@ -10,31 +10,32 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/textTeamNameHeader"
                 android:text="Name"
-                android:ems="6"
+                android:ems="10"
                 android:textColor="@color/material_blue_grey_900"/>
 
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/textTeamIdHeader"
                 android:text="ID"
                 android:layout_marginLeft="5dp"
-                android:ems="4"
+                android:ems="5"
                 android:textColor="@color/material_blue_grey_900"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/textTeamRankHeader"
                 android:text="Rank"
                 android:layout_marginLeft="5dp"
-                android:ems="3"
+                android:ems="5"
                 android:textColor="@color/material_blue_grey_900"/>
+
 
 </LinearLayout>

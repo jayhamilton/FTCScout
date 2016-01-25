@@ -30,6 +30,7 @@ public class FTCTeam {
     boolean autoParkHighZone;
     boolean illumBeacon;
     boolean releaseClimbers;
+    boolean active;
     String teleDefense;
     String teleScoring;
     String endMountainLevel;
@@ -201,6 +202,13 @@ public class FTCTeam {
         FTCTeam that = (FTCTeam) aThat;
         return
                 this.teamId == that.teamId;
+    }
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
 }

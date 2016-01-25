@@ -58,8 +58,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
+                
                 TextView _teamId = (TextView) view.findViewById(R.id.textTeamId);
 
                 if (_teamId != null) {
