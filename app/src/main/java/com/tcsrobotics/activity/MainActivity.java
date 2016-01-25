@@ -14,6 +14,7 @@ import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.R;
 
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     List<FTCTeam> teams;
     ListView listView;
     SearchView searchView;
+    Switch activeTeamSwitch;
+    boolean activeTeamsOnly;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +51,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             }
         });
 
-        setTeams(DataProvider.teamList);
 
-        FTCTeamAdapter adapter = new FTCTeamAdapter(this, getTeams());
+
+
+        final FTCTeamAdapter adapter = new FTCTeamAdapter(this, getTeams());
         listView.setAdapter(adapter);
         listView.addHeaderView(header);
 
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+
                 TextView _teamId = (TextView) view.findViewById(R.id.textTeamId);
 
                 if (_teamId != null) {
@@ -68,6 +72,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         });
 
         setupSearchView();
+
+        activeTeamSwitch = (Switch) findViewById(R.id.switch1);
+        activeTeamSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener (){
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                activeTeamsOnly = isChecked;
+                adapter.setTeams(getTeams());
+                adapter.notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -129,11 +144,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
     private List<FTCTeam> getTeams() {
-        return teams;
-    }
+       List<FTCTeam> teamList = DataProvider.getTeamList(activeTeamsOnly);
+        if(teamList != null && !teamList.isEmpty()) {
+            Collections.sort(teamList);
+        }
+        return teamList;
 
-    private void setTeams(List<FTCTeam> teams) {
-        this.teams = teams;
     }
 
     @Override

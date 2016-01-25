@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by jayhamilton on 1/4/16.
  */
-public class FTCTeam {
+public class FTCTeam implements Comparable<FTCTeam> {
 
     String teamId;
 
@@ -192,7 +192,7 @@ public class FTCTeam {
     }
 
 
-    public FTCTeam(String team){
+    public FTCTeam(String team) {
         setTeamName(team);
     }
 
@@ -203,6 +203,7 @@ public class FTCTeam {
         return
                 this.teamId == that.teamId;
     }
+
     public boolean isActive() {
         return active;
     }
@@ -211,4 +212,10 @@ public class FTCTeam {
         this.active = active;
     }
 
+
+    @Override
+    public int compareTo(FTCTeam another) {
+
+        return this.getTeamName().trim().toLowerCase().compareTo(another.getTeamName().trim().toLowerCase());
+    }
 }

@@ -2,6 +2,7 @@ package com.tcsrobotics.scout.states;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import com.tcsrobotics.domain.DataProvider;
@@ -76,12 +77,14 @@ public class EditState implements AppState {
         EditText teamId = (EditText) detailActivity.findViewById(R.id.editTextTeamId);
         EditText teamName = (EditText) detailActivity.findViewById(R.id.editTextTeamName);
         EditText teamRanking = (EditText) detailActivity.findViewById(R.id.editTeamRanking);
+        CompoundButton isTeamActive = (CompoundButton)detailActivity.findViewById(R.id.activeTeamSwitch);
 
 
         teamId.setText(team.getTeamId());
         teamName.setText(team.getTeamName());
         String _teamRank = team.getTeamRank() + "";
         teamRanking.setText(_teamRank);
+        isTeamActive.setChecked(team.isActive());
 
 
     }

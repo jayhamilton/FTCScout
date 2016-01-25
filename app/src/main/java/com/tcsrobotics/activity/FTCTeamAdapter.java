@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by jayhamilton on 1/4/16.
  */
-public class FTCTeamAdapter extends BaseAdapter implements Filterable{
+public class FTCTeamAdapter extends BaseAdapter implements Filterable {
 
     private List<FTCTeam> teams;
     private List<FTCTeam> orig;
@@ -32,7 +32,7 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable{
 
     }
 
-    public class TeamHolder{
+    public class TeamHolder {
 
         TextView vteamName;
         TextView vteamId;
@@ -60,24 +60,24 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable{
 
         TeamHolder teamHolder;
 
-        if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
             teamHolder = new TeamHolder();
             teamHolder.vteamName = (TextView) convertView.findViewById(R.id.textTeamName);
             teamHolder.vteamId = (TextView) convertView.findViewById(R.id.textTeamId);
             teamHolder.vteamRank = (TextView) convertView.findViewById(R.id.textTeamRank);
             convertView.setTag(teamHolder);
 
-        }else{
+        } else {
 
             teamHolder = (TeamHolder) convertView.getTag();
         }
 
-        teamHolder.vteamName.setText( teams.get(position).getTeamName());
-        teamHolder.vteamId.setText( teams.get(position).getTeamId());
-        teamHolder.vteamRank.setText( teams.get(position).getTeamRank() + "");
+        teamHolder.vteamName.setText(teams.get(position).getTeamName());
+        teamHolder.vteamId.setText(teams.get(position).getTeamId());
+        teamHolder.vteamRank.setText(teams.get(position).getTeamRank() + "");
 
-        return  convertView;
+        return convertView;
 
     }
 
@@ -94,8 +94,9 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable{
                     if (orig != null && orig.size() > 0) {
                         for (final FTCTeam t : orig) {
                             if (t.getTeamName().toLowerCase()
-                                    .contains(constraint.toString()) || t.getTeamId().toLowerCase().contains(constraint.toString()) )
+                                    .contains(constraint.toString()) || t.getTeamId().toLowerCase().contains(constraint.toString())) {
                                 results.add(t);
+                            }
                         }
                     }
                     oReturn.values = results;
@@ -111,7 +112,12 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable{
             }
         };
     }
+
     public void notifyDataSetChanged() {
         super.notifyDataSetChanged();
+    }
+
+    public void setTeams(List<FTCTeam> teams) {
+        this.teams = teams;
     }
 }
