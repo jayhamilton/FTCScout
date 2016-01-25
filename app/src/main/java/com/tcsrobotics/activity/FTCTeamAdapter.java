@@ -28,7 +28,7 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable {
 
         super();
         this.context = context;
-        this.teams = teams;
+        setTeams(teams);
 
     }
 
@@ -41,12 +41,12 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public int getCount() {
-        return teams.size();
+        return getTeams().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return teams.get(position);
+        return getTeams().get(position);
     }
 
     @Override
@@ -73,9 +73,9 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable {
             teamHolder = (TeamHolder) convertView.getTag();
         }
 
-        teamHolder.vteamName.setText(teams.get(position).getTeamName());
-        teamHolder.vteamId.setText(teams.get(position).getTeamId());
-        teamHolder.vteamRank.setText(teams.get(position).getTeamRank() + "");
+        teamHolder.vteamName.setText(getTeams().get(position).getTeamName());
+        teamHolder.vteamId.setText(getTeams().get(position).getTeamId());
+        teamHolder.vteamRank.setText(getTeams().get(position).getTeamRank() + "");
 
         return convertView;
 
@@ -89,7 +89,7 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable {
                 final FilterResults oReturn = new FilterResults();
                 final List<FTCTeam> results = new ArrayList<>();
                 if (orig == null)
-                    orig = teams;
+                    orig = getTeams();
                 if (constraint != null) {
                     if (orig != null && orig.size() > 0) {
                         for (final FTCTeam t : orig) {
@@ -107,7 +107,7 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable {
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
 
-                teams = (ArrayList<FTCTeam>) results.values;
+                setTeams((List<FTCTeam>) results.values);
                 notifyDataSetChanged();
             }
         };
@@ -119,5 +119,13 @@ public class FTCTeamAdapter extends BaseAdapter implements Filterable {
 
     public void setTeams(List<FTCTeam> teams) {
         this.teams = teams;
+    }
+    public void setTeams(List<FTCTeam> teams, boolean clearfilter){
+        orig = null;
+        this.teams = teams;
+    }
+
+    private List<FTCTeam> getTeams() {
+        return teams;
     }
 }

@@ -23,11 +23,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public static final String OP_EDIT = "EDIT";
     public static final String OP_NEW = "NEW";
 
-    List<FTCTeam> teams;
     ListView listView;
     SearchView searchView;
     Switch activeTeamSwitch;
-    boolean activeTeamsOnly;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +51,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         });
 
 
-
-
-        final FTCTeamAdapter adapter = new FTCTeamAdapter(this, getTeams());
+        final FTCTeamAdapter adapter = new FTCTeamAdapter(this, getTeams(false));
         listView.setAdapter(adapter);
         listView.addHeaderView(header);
 
@@ -74,13 +71,16 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         setupSearchView();
 
         activeTeamSwitch = (Switch) findViewById(R.id.switch1);
-        activeTeamSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener (){
+        activeTeamSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                activeTeamsOnly = isChecked;
-                adapter.setTeams(getTeams());
+            public void onCheckedChanged(CompoundButton buttonView, boolean enableActiveTeamFilter) {
+
+                //update adapter with team list and clear adapter's internal filtered list (true)
+                adapter.setTeams(getTeams(enableActiveTeamFilter), true);
                 adapter.notifyDataSetChanged();
+                //reapply filter
+                adapter.getFilter().filter(((SearchView) findViewById(R.id.searchView)).getQuery());
             }
         });
 
@@ -143,9 +143,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return super.onOptionsItemSelected(item);
     }
 
-    private List<FTCTeam> getTeams() {
-       List<FTCTeam> teamList = DataProvider.getTeamList(activeTeamsOnly);
-        if(teamList != null && !teamList.isEmpty()) {
+    private List<FTCTeam> getTeams(boolean enableActiveTeamFilter) {
+        List<FTCTeam> teamList = DataProvider.getTeamList(enableActiveTeamFilter);
+        if (teamList != null && !teamList.isEmpty()) {
             Collections.sort(teamList);
         }
         return teamList;
