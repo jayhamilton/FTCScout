@@ -91,37 +91,6 @@ public class DetailActivity extends AppCompatActivity {
     public void editControlClickHandler(View view) {
 
         state.performModification();
-/*
-        switch (view.getId()) {
-
-            case R.id.editTeamRanking:
-            case R.id.editTextTeamId:
-            case R.id.editTextTeamName:
-            case R.id.editTextDefenseComment:
-                final EditText textControl = (EditText) findViewById(view.getId());
-                textControl.addTextChangedListener(new TextWatcher() {
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                        // TODO Auto-generated method stub
-                    }
-
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                        // TODO Auto-generated method stub
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                        state.performModification();
-                        Toast.makeText(DetailActivity.this, "Text Changed to " + textControl.getText() + " while in state " + getState().getClass().getName(), Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-        }
-        */
 
     }
 

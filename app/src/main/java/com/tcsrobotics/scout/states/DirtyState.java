@@ -56,8 +56,6 @@ public class DirtyState implements AppState {
     @Override
     public void performModification() {
 
-
-
     }
 
     @Override

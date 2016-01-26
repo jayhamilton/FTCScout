@@ -32,7 +32,6 @@ public class EditState implements AppState {
             child.setEnabled(true);
         }
 
-        /* enable action bar controls */
     }
 
     @Override
@@ -51,7 +50,6 @@ public class EditState implements AppState {
     public void performModification() {
         detailActivity.getOptionsMenu().findItem(R.id.action_save_active).setVisible(true);
         detailActivity.setState(detailActivity.getDirtyState());
-
     }
 
     @Override

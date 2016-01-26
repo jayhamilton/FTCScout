@@ -1,0 +1,233 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView2">
+    <GridLayout
+
+            tools:context="com.tcsrobotics.activity.DetailActivity"
+            android:id="@+id/ftc_detail_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="5"
+            android:rowCount="31">
+
+
+        <Space
+                android:layout_width="20px"
+                android:layout_height="80px"
+                android:layout_row="1" android:layout_column="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="FTC ResQ Challenge"
+                android:id="@+id/textViewTitle"
+                android:layout_row="2"
+                android:layout_column="0"/>
+        <Space
+                android:layout_width="20px"
+                android:layout_height="30px"
+                android:layout_row="3" android:layout_column="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Autonomous"
+                android:id="@+id/textViewAuto"
+                android:layout_row="4"
+                android:layout_column="0" android:textColor="#ff1f6e"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_auto"
+                android:layout_row="6"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Enabled"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_auto_park_beacon"
+                android:layout_row="7"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Park in a Rescue Beacon Repair Zone"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_auto_park_floor_goal"
+                android:layout_row="8"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Park in Floor Goal"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_auto_park_lowzone"
+                android:layout_row="9"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Park in Mountain Low Zone"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_auto_park_midzone"
+                android:layout_row="10"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Park in Mountain Mid Zone"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_auto_park_highzone"
+                android:layout_row="11"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Park in Mountain High Zone"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_auto_illuminate_beacon"
+                android:layout_row="12"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Illuminate Beacon"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_auto_release_climbers"
+                android:layout_row="13"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Release Climbers"/>
+        <Space
+                android:layout_width="20px"
+                android:layout_height="40px"
+                android:layout_row="14" android:layout_column="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Teleop Strengths"
+                android:id="@+id/textViewTeleop"
+                android:layout_row="15"
+                android:layout_column="0" android:textColor="#ff1f6e"/>
+        <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_row="16" android:layout_column="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Defensive strength"
+                android:id="@+id/textViewDefense" android:layout_row="17" android:layout_column="0"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/editTextDefense" android:layout_row="18" android:layout_column="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Scoring strength"
+                android:id="@+id/textViewScoring" android:layout_row="19" android:layout_column="0"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/editTextScoring" android:layout_row="20" android:layout_column="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Comment"
+                android:id="@+id/textViewComment" android:layout_row="21" android:layout_column="0"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/editText" android:layout_row="22" android:layout_column="0"/>
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="End Game Strengths"
+                android:id="@+id/textViewEndGame"
+                android:layout_row="23"
+                android:layout_column="0" android:textColor="#ff1f6e"/>
+        <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_row="24" android:layout_column="0"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_end_game_all_clear"
+                android:layout_row="25"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Can set the all clear flage"/>
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbx_end_game_hang"
+                android:layout_row="26"
+                android:layout_column="0"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="editControlClickHandler" android:text="Can hang from bar"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Mountain level achieved"
+                android:id="@+id/textViewEndGameMountain" android:layout_row="27" android:layout_column="0"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/editTextMountain" android:layout_row="28" android:layout_column="0"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Comment"
+                android:id="@+id/textViewEndGameComment" android:layout_row="29" android:layout_column="0"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/editTextEndGameComment" android:layout_row="30" android:layout_column="0"/>
+
+
+
+
+    </GridLayout>
+
+</ScrollView>
+
+
+
