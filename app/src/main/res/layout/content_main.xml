@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:text="Show only active teams"
                 android:id="@+id/switch1"
-                android:padding="15dp"/>
+                android:padding="15dp" android:textColor="#ff1f6e"/>
         <ListView
                 android:layout_width="match_parent"
                 android:id="@+id/listView"
