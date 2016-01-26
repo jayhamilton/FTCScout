@@ -38,6 +38,14 @@ public class DirtyState implements AppState {
                 child.setEnabled(false);
             }
         }
+         /* enable questionnaire fragment controls */
+        viewGroup = detailActivity.getDetailFragment().getGridLayoutFragment();
+        count = viewGroup.getChildCount();
+        for (int i = 0; i < count; i++) {
+            View child = viewGroup.getChildAt(i);
+            child.setEnabled(false);
+        }
+
 
         //getTeamObject and add it to the dataprovider
         FTCTeam _team = detailActivity.getTeam();

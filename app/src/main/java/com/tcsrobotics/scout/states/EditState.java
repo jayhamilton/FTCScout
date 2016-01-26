@@ -5,9 +5,9 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import com.tcsrobotics.activity.DetailActivity;
 import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
-import com.tcsrobotics.activity.DetailActivity;
 import com.tcsrobotics.myapplication.R;
 
 /**
@@ -24,13 +24,22 @@ public class EditState implements AppState {
 
     @Override
     public void performEditing() {
-        /* enable controls */
+        /* enable main team controls */
         ViewGroup viewGroup = (GridLayout) detailActivity.findViewById(R.id.gridLayout);
         int count = viewGroup.getChildCount();
         for (int i = 0; i < count; i++) {
             View child = viewGroup.getChildAt(i);
             child.setEnabled(true);
         }
+
+         /* enable questionnaire fragment controls */
+        viewGroup = detailActivity.getDetailFragment().getGridLayoutFragment();
+        count = viewGroup.getChildCount();
+        for (int i = 0; i < count; i++) {
+            View child = viewGroup.getChildAt(i);
+            child.setEnabled(true);
+        }
+
 
     }
 
@@ -75,7 +84,7 @@ public class EditState implements AppState {
         EditText teamId = (EditText) detailActivity.findViewById(R.id.editTextTeamId);
         EditText teamName = (EditText) detailActivity.findViewById(R.id.editTextTeamName);
         EditText teamRanking = (EditText) detailActivity.findViewById(R.id.editTeamRanking);
-        CompoundButton isTeamActive = (CompoundButton)detailActivity.findViewById(R.id.activeTeamSwitch);
+        CompoundButton isTeamActive = (CompoundButton) detailActivity.findViewById(R.id.activeTeamSwitch);
 
 
         teamId.setText(team.getTeamId());

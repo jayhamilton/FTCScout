@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import com.tcsrobotics.domain.FTCTeam;
+import com.tcsrobotics.fragments.QuestionnaireFragment;
 import com.tcsrobotics.myapplication.R;
 import com.tcsrobotics.scout.states.*;
 
@@ -29,6 +30,8 @@ public class DetailActivity extends AppCompatActivity {
     AppState newState;
 
     FTCTeam team;
+    QuestionnaireFragment detailFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
+
+        setDetailFragment((QuestionnaireFragment) getFragmentManager().findFragmentById(R.id.ftc_detail_fragment));
 
         initialize();
 
@@ -192,5 +197,13 @@ public class DetailActivity extends AppCompatActivity {
 
     public void setTeam(FTCTeam team) {
         this.team = team;
+    }
+
+    public QuestionnaireFragment getDetailFragment() {
+        return detailFragment;
+    }
+
+    private void setDetailFragment(QuestionnaireFragment detailFragment) {
+        this.detailFragment = detailFragment;
     }
 }

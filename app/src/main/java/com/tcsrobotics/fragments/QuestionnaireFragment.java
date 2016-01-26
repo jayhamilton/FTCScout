@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import com.tcsrobotics.myapplication.R;
 
 /**
@@ -12,6 +13,7 @@ import com.tcsrobotics.myapplication.R;
  */
 public class QuestionnaireFragment extends Fragment {
 
+    GridLayout gridLayoutFragment;
     public QuestionnaireFragment() {
 
     }
@@ -20,9 +22,13 @@ public class QuestionnaireFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
 
         View rootView = inflater.inflate(R.layout.ftc_quest_fragment, container, false);
+        this.gridLayoutFragment = (GridLayout)rootView.findViewById(R.id.ftc_detail_fragment);
         return rootView;
 
     }
 
+    public GridLayout getGridLayoutFragment(){
+        return gridLayoutFragment;
+    }
 
 }
