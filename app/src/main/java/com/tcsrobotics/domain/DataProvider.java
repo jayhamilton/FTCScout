@@ -1,5 +1,7 @@
 package com.tcsrobotics.domain;
 
+import com.tcsrobotics.domain.resq.FTCChallengeQuestionnaireDTO;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -156,6 +158,7 @@ public class DataProvider {
     public static void addTeam(String teamName, String teamId, int teamRank) {
 
         FTCTeam _team = new FTCTeam(teamName);
+        _team.setQuestionnaireDto(new FTCChallengeQuestionnaireDTO());
         _team.setTeamId(teamId);
         _team.setTeamRank(teamRank);
         teamMap.put(teamId, _team);

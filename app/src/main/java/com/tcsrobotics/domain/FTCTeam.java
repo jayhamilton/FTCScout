@@ -1,6 +1,6 @@
 package com.tcsrobotics.domain;
 
-import com.tcsrobotics.challenge.FTCChallengeQuestionnaire;
+import com.tcsrobotics.domain.resq.FTCChallengeQuestionnaireDTO;
 
 import java.util.Date;
 
@@ -18,8 +18,7 @@ public class FTCTeam implements Comparable<FTCTeam> {
     boolean auto;
     String comment;
 
-    FTCChallengeQuestionnaire questionnaire;
-
+    FTCChallengeQuestionnaireDTO questionnaireDto;
 
     public FTCTeam(String team) {
         setTeamName(team);
@@ -81,16 +80,6 @@ public class FTCTeam implements Comparable<FTCTeam> {
         this.comment = comment;
     }
 
-
-    public FTCChallengeQuestionnaire getChallengeQuestionaire() {
-        return questionnaire;
-    }
-
-    public void setChallenge(FTCChallengeQuestionnaire questionnaire) {
-        this.questionnaire = questionnaire;
-    }
-
-
     public boolean equals(Object aThat) {
         if (this == aThat) return true;
         if (!(aThat instanceof FTCTeam)) return false;
@@ -103,5 +92,13 @@ public class FTCTeam implements Comparable<FTCTeam> {
     public int compareTo(FTCTeam another) {
 
         return this.getTeamName().trim().toLowerCase().compareTo(another.getTeamName().trim().toLowerCase());
+    }
+
+    public FTCChallengeQuestionnaireDTO getQuestionnaireDto() {
+        return questionnaireDto;
+    }
+
+    public void setQuestionnaireDto(FTCChallengeQuestionnaireDTO questionnaireDto) {
+        this.questionnaireDto = questionnaireDto;
     }
 }

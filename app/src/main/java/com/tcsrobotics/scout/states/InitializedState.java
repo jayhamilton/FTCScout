@@ -8,14 +8,12 @@ import com.tcsrobotics.activity.MainActivity;
 /**
  * Created by jayhamilton on 1/19/16.
  */
-public class InitializedState implements AppState {
+public class InitializedState extends CommonStateOps implements AppState {
 
-    DetailActivity detailActivity;
-
-    public InitializedState(DetailActivity _detailActivity) {
-
-        this.detailActivity = _detailActivity;
+    public InitializedState (DetailActivity _detailActivity) {
+        super(_detailActivity);
     }
+
 
 
     @Override
@@ -43,7 +41,7 @@ public class InitializedState implements AppState {
 
         String teamId = detailActivity.getIntent().getStringExtra(MainActivity.TEAM_ID);
 
-        FTCTeam team = null;
+        FTCTeam team;
         if (teamId.compareTo(MainActivity.OP_NEW) == 0) {
             team = new FTCTeam("");
             detailActivity.setState(detailActivity.getNewState());

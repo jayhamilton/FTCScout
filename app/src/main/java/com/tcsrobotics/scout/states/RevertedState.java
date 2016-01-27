@@ -3,13 +3,11 @@ package com.tcsrobotics.scout.states;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.activity.DetailActivity;
 
-public class RevertedState implements AppState {
+public class RevertedState extends CommonStateOps implements AppState {
 
 
-    DetailActivity detailActivity;
-
-    public RevertedState(DetailActivity _detailActivity) {
-        detailActivity = _detailActivity;
+    public RevertedState  (DetailActivity _detailActivity) {
+        super(_detailActivity);
     }
 
     @Override

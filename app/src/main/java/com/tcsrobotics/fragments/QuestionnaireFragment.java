@@ -14,6 +14,7 @@ import com.tcsrobotics.myapplication.R;
 public class QuestionnaireFragment extends Fragment {
 
     GridLayout gridLayoutFragment;
+
     public QuestionnaireFragment() {
 
     }
@@ -22,12 +23,12 @@ public class QuestionnaireFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
 
         View rootView = inflater.inflate(R.layout.ftc_quest_fragment, container, false);
-        this.gridLayoutFragment = (GridLayout)rootView.findViewById(R.id.ftc_detail_fragment);
+        this.gridLayoutFragment = (GridLayout) rootView.findViewById(R.id.ftc_detail_fragment);
         return rootView;
 
     }
 
-    public GridLayout getGridLayoutFragment(){
+    public GridLayout getGridLayoutFragment() {
         return gridLayoutFragment;
     }
 

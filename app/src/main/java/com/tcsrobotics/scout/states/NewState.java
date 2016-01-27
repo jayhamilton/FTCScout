@@ -1,24 +1,19 @@
 package com.tcsrobotics.scout.states;
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.GridLayout;
+import com.tcsrobotics.activity.DetailActivity;
 import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
-import com.tcsrobotics.activity.DetailActivity;
 import com.tcsrobotics.myapplication.R;
 
 /**
  * Created by jayhamilton on 1/23/16.
  */
-public class NewState implements AppState {
+public class NewState extends CommonStateOps implements AppState {
 
-    DetailActivity detailActivity;
-
-    public NewState(DetailActivity _detailActivity) {
-        detailActivity = _detailActivity;
+    public NewState (DetailActivity _detailActivity) {
+        super(_detailActivity);
     }
+
 
     @Override
     public void performEditing() {
@@ -28,22 +23,9 @@ public class NewState implements AppState {
     @Override
     public void performSaving() {
 
-        ViewGroup viewGroup = (GridLayout) detailActivity.findViewById(R.id.gridLayout);
-        int count = viewGroup.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View child = viewGroup.getChildAt(i);
-            if (child.isClickable()) {
-                child.setEnabled(false);
-            }
-        }
+        setDetailControlsState(false);
 
-        //getTeamObject and add it to the dataprovider
-        FTCTeam _team = detailActivity.getTeam();
-        _team.setTeamId(((EditText) detailActivity.findViewById(R.id.editTextTeamId)).getText().toString());
-        _team.setTeamName(((EditText) detailActivity.findViewById(R.id.editTextTeamName)).getText().toString());
-        _team.setTeamRank(66);
-
-        DataProvider.saveTeam(_team);
+        DataProvider.saveTeam(getTeamDTOFromUserSettings());
 
         detailActivity.getOptionsMenu().findItem(R.id.action_save_active).setVisible(false);
         detailActivity.getOptionsMenu().findItem(R.id.action_edit_team_active).setVisible(true);
@@ -76,24 +58,8 @@ public class NewState implements AppState {
     @Override
     public void showControls(FTCTeam team) {
 
-
-        EditText teamId = (EditText) detailActivity.findViewById(R.id.editTextTeamId);
-        EditText teamName = (EditText) detailActivity.findViewById(R.id.editTextTeamName);
-        EditText teamRanking = (EditText) detailActivity.findViewById(R.id.editTeamRanking);
-
-
-        teamId.setText(team.getTeamId());
-        teamName.setText(team.getTeamName());
-        String _teamRank = team.getTeamRank() + "";
-        teamRanking.setText(_teamRank);
-
-         /* enable controls */
-        ViewGroup viewGroup = (GridLayout) detailActivity.findViewById(R.id.gridLayout);
-        int count = viewGroup.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View child = viewGroup.getChildAt(i);
-            child.setEnabled(true);
-        }
+        //in this state the team should be empty
+        setDetailControlsState(true);
 
     }
 }

@@ -1,35 +1,23 @@
 package com.tcsrobotics.scout.states;
 
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.GridLayout;
-import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.activity.DetailActivity;
-import com.tcsrobotics.myapplication.R;
+import com.tcsrobotics.domain.FTCTeam;
 
 /**
  * Created by jayhamilton on 9/19/15.
  */
-public class SavedState implements AppState {
-
-
-    DetailActivity detailActivity;
+public class SavedState extends CommonStateOps implements AppState {
 
     public SavedState(DetailActivity _detailActivity) {
-        detailActivity = _detailActivity;
+        super(_detailActivity);
     }
 
     @Override
     public void performEditing() {
 
-         /* enable controls */
-        ViewGroup viewGroup = (GridLayout) detailActivity.findViewById(R.id.gridLayout);
-        int count = viewGroup.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View child = viewGroup.getChildAt(i);
-            child.setEnabled(true);
-        }
+        setDetailControlsState(true);
+
         detailActivity.setState(detailActivity.getEditState());
     }
 
@@ -57,7 +45,7 @@ public class SavedState implements AppState {
 
     @Override
     public void performUndo() {
-        
+
     }
 
     @Override

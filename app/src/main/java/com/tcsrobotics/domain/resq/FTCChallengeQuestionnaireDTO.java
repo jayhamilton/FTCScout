@@ -1,9 +1,9 @@
-package com.tcsrobotics.challenge.resq;
+package com.tcsrobotics.domain.resq;
 
 /**
  * Created by jayhamilton on 1/25/16.
  */
-public class FTCResqChallengeQuestionnaireDTO {
+public class FTCChallengeQuestionnaireDTO {
 
     boolean autoParkBeacon;
     boolean autoParkField;
@@ -11,6 +11,7 @@ public class FTCResqChallengeQuestionnaireDTO {
     boolean autoParkLowZone;
     boolean autoParkMidZone;
     boolean autoParkHighZone;
+    boolean autoEnabled;
     boolean illumBeacon;
     boolean releaseClimbers;
     String teleDefense;
@@ -123,4 +124,13 @@ public class FTCResqChallengeQuestionnaireDTO {
     public void setEndBarHang(String endBarHang) {
         this.endBarHang = endBarHang;
     }
+
+    public void setAutoEnabled(boolean autoEnabled) {
+        this.autoEnabled = autoEnabled;
+    }
+    public boolean isAutoEnabled() {
+        return autoEnabled;
+    }
+
+
 }
