@@ -5,6 +5,7 @@ package com.tcsrobotics.domain.resq;
  */
 public class FTCChallengeQuestionnaireDTO {
 
+    /*autonomous*/
     boolean autoParkBeacon;
     boolean autoParkField;
     boolean autoParkPartMnt;
@@ -14,11 +15,66 @@ public class FTCChallengeQuestionnaireDTO {
     boolean autoEnabled;
     boolean illumBeacon;
     boolean releaseClimbers;
+    String autoComment;
+
+    public String getAutoComment() {
+        return autoComment;
+    }
+
+    public void setAutoComment(String autoComment) {
+        this.autoComment = autoComment;
+    }
+
+    public boolean isEndAllClear() {
+        return endAllClear;
+    }
+
+    public void setEndAllClear(boolean endAllClear) {
+        this.endAllClear = endAllClear;
+    }
+
+    public boolean isEndBarHang() {
+        return endBarHang;
+    }
+
+    public void setEndBarHang(boolean endBarHang) {
+        this.endBarHang = endBarHang;
+    }
+
+    public String getEndComment() {
+        return endComment;
+    }
+
+    public void setEndComment(String endComment) {
+        this.endComment = endComment;
+    }
+
+    public int getEndMountainLevel() {
+        return endMountainLevel;
+    }
+
+    public void setEndMountainLevel(int endMountainLevel) {
+        this.endMountainLevel = endMountainLevel;
+    }
+
+    public String getTeleComment() {
+        return teleComment;
+    }
+
+    public void setTeleComment(String teleComment) {
+        this.teleComment = teleComment;
+    }
+
+    /*end game*/
+    boolean endAllClear;
+    boolean endBarHang;
+    String endComment;
+    int endMountainLevel;
+
+    /*teleop*/
     String teleDefense;
     String teleScoring;
-    String endMountainLevel;
-    String endAllClear;
-    String endBarHang;
+    String teleComment;
 
 
     public boolean isAutoParkBeacon() {
@@ -101,33 +157,10 @@ public class FTCChallengeQuestionnaireDTO {
         this.teleScoring = teleScoring;
     }
 
-    public String getEndMountainLevel() {
-        return endMountainLevel;
-    }
-
-    public void setEndMountainLevel(String endMountainLevel) {
-        this.endMountainLevel = endMountainLevel;
-    }
-
-    public String getEndAllClear() {
-        return endAllClear;
-    }
-
-    public void setEndAllClear(String endAllClear) {
-        this.endAllClear = endAllClear;
-    }
-
-    public String getEndBarHang() {
-        return endBarHang;
-    }
-
-    public void setEndBarHang(String endBarHang) {
-        this.endBarHang = endBarHang;
-    }
-
     public void setAutoEnabled(boolean autoEnabled) {
         this.autoEnabled = autoEnabled;
     }
+
     public boolean isAutoEnabled() {
         return autoEnabled;
     }

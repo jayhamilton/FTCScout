@@ -47,10 +47,10 @@ public class InitializedState extends CommonStateOps implements AppState {
             detailActivity.setState(detailActivity.getNewState());
         } else {
             team = DataProvider.teamMap.get(teamId);
+            setDetailControlsState(false);
             detailActivity.setState(detailActivity.getEditState());
         }
         detailActivity.setTeam(team);
-
         detailActivity.getState().showControls(team);
 
     }
