@@ -2,6 +2,7 @@ package com.tcsrobotics.scout.states;
 
 
 import com.tcsrobotics.activity.DetailActivity;
+import com.tcsrobotics.domain.FTCChallengeQuestionnaire;
 import com.tcsrobotics.domain.FTCTeam;
 
 /**
@@ -9,8 +10,8 @@ import com.tcsrobotics.domain.FTCTeam;
  */
 public class SavedState extends CommonStateOps implements AppState {
 
-    public SavedState(DetailActivity _detailActivity) {
-        super(_detailActivity);
+    public SavedState (DetailActivity _detailActivity, FTCChallengeQuestionnaire _ftcChallengeQuestionnaire) {
+        super(_detailActivity, _ftcChallengeQuestionnaire);
     }
 
     @Override

@@ -11,7 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import com.tcsrobotics.domain.FTCChallengeQuestionnaire;
 import com.tcsrobotics.domain.FTCTeam;
+import com.tcsrobotics.domain.FTCChallengeQuestionnaireFactory;
 import com.tcsrobotics.fragments.QuestionnaireFragment;
 import com.tcsrobotics.myapplication.R;
 import com.tcsrobotics.scout.states.*;
@@ -135,7 +137,6 @@ public class DetailActivity extends AppCompatActivity {
 
         // show it
         alertDialog.show();
-
     }
 
     public void setState(AppState _state) {
@@ -180,15 +181,21 @@ public class DetailActivity extends AppCompatActivity {
 
     private void initialize() {
 
-        this.dirtyState = new DirtyState(this);
-        this.initializedState = new InitializedState(this);
-        this.revertedState = new RevertedState(this);
-        this.savedState = new SavedState(this);
-        this.editState = new EditState(this);
-        this.newState = new NewState(this);
+        FTCChallengeQuestionnaire q = getFTCChallengeQuestionnaire();
+        this.dirtyState = new DirtyState(this,q);
+        this.initializedState = new InitializedState(this,q);
+        this.revertedState = new RevertedState(this,q);
+        this.savedState = new SavedState(this,q);
+        this.editState = new EditState(this,q);
+        this.newState = new NewState(this,q);
         this.state = this.initializedState;
         this.state.initializeDetailScreen();
 
+    }
+
+    private FTCChallengeQuestionnaire getFTCChallengeQuestionnaire() {
+
+        return FTCChallengeQuestionnaireFactory.getChallenge(this);
     }
 
     public FTCTeam getTeam() {

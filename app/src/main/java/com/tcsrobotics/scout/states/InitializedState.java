@@ -1,6 +1,7 @@
 package com.tcsrobotics.scout.states;
 
 import com.tcsrobotics.domain.DataProvider;
+import com.tcsrobotics.domain.FTCChallengeQuestionnaire;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.activity.DetailActivity;
 import com.tcsrobotics.activity.MainActivity;
@@ -10,10 +11,9 @@ import com.tcsrobotics.activity.MainActivity;
  */
 public class InitializedState extends CommonStateOps implements AppState {
 
-    public InitializedState (DetailActivity _detailActivity) {
-        super(_detailActivity);
+    public InitializedState (DetailActivity _detailActivity, FTCChallengeQuestionnaire _ftcChallengeQuestionnaire) {
+        super(_detailActivity, _ftcChallengeQuestionnaire);
     }
-
 
 
     @Override

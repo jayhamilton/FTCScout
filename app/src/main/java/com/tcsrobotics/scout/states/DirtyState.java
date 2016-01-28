@@ -3,6 +3,7 @@ package com.tcsrobotics.scout.states;
 
 import com.tcsrobotics.activity.DetailActivity;
 import com.tcsrobotics.domain.DataProvider;
+import com.tcsrobotics.domain.FTCChallengeQuestionnaire;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.R;
 
@@ -11,8 +12,8 @@ import com.tcsrobotics.myapplication.R;
  */
 public class DirtyState extends CommonStateOps implements AppState {
 
-    public DirtyState(DetailActivity _detailActivity) {
-        super(_detailActivity);
+    public DirtyState (DetailActivity _detailActivity ,FTCChallengeQuestionnaire _ftcChallengeQuestionnaire) {
+        super(_detailActivity,_ftcChallengeQuestionnaire) ;
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import com.tcsrobotics.activity.DetailActivity;
 import com.tcsrobotics.domain.DataProvider;
+import com.tcsrobotics.domain.FTCChallengeQuestionnaire;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.R;
 
@@ -13,8 +14,8 @@ import com.tcsrobotics.myapplication.R;
 public class EditState extends CommonStateOps implements AppState {
 
 
-    public EditState(DetailActivity _detailActivity) {
-        super(_detailActivity);
+    public EditState (DetailActivity _detailActivity ,FTCChallengeQuestionnaire _ftcChallengeQuestionnaire) {
+        super(_detailActivity,_ftcChallengeQuestionnaire) ;
     }
 
 
@@ -71,7 +72,7 @@ public class EditState extends CommonStateOps implements AppState {
         teamRanking.setText(_teamRank);
         isTeamActive.setChecked(team.isActive());
 
-        setDetailControlsFromDetailDTO(team.getQuestionnaireDto());
+        getFTCQuestionnaire().setDetailControlsFromDetailDTO(team.getQuestionnaireDto());
 
 
     }
