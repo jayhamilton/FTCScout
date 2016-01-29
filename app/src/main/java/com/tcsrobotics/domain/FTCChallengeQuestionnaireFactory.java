@@ -9,6 +9,7 @@ import com.tcsrobotics.domain.resq.FTCChallengeQuestionnaireImpl;
  public  class FTCChallengeQuestionnaireFactory {
 
     static FTCChallengeQuestionnaire ftcChallengeQuestionnaire;
+    private FTCChallengeQuestionnaireFactory(){}
     public static FTCChallengeQuestionnaire getChallenge(DetailActivity detailActivity){
 
         if(ftcChallengeQuestionnaire == null) {
