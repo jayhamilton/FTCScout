@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import com.tcsrobotics.database.FTCDBHelper;
 import com.tcsrobotics.domain.DataProvider;
 import com.tcsrobotics.domain.FTCTeam;
 import com.tcsrobotics.myapplication.R;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     ListView listView;
     SearchView searchView;
     Switch activeTeamSwitch;
+    FTCDBHelper ftcdbHelper;
 
 
     @Override
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        ftcdbHelper = new FTCDBHelper(this);
 
         listView = (ListView) findViewById(R.id.listView);
         searchView = (SearchView) findViewById(R.id.searchView);
