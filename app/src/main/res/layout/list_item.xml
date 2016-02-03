@@ -11,7 +11,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/textTeamName"
-                android:ems="10"
+                android:ems="12"
                 android:text="TEST"
         />
 
@@ -22,7 +22,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/textTeamId"
                 android:layout_marginLeft="5dp"
-                android:ems="10"
+                android:ems="9"
                 android:text="TEST"
         />
 
